@@ -1,0 +1,17 @@
+<h1>Main#test</h1>
+<p>Find me in app/views/main/test.html.erb</p>
+
+
+<%= form_with url: "/main/calculate", method: "post", data:{turbo: false} do|form| %>
+<%= hidden_field_tag(:round,@round) %>
+
+<% @round.to_i.times{ |i| %>
+    <label for="subject[name]"> subject <%= i+1 %> </label>
+    <input type="text" name="subject[name][]" value="">
+    <label for="subject[score]"> score <%= i+1 %> </label>
+    <input type="number" name="subject[score][]" value="">
+    <br>
+<% }%>
+<%= form.submit %>
+<% end %>
+
