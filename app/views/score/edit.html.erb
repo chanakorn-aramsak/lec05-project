@@ -1,0 +1,26 @@
+<h1>Score#edit</h1>
+<p>Find me in app/views/score/edit.html.erb</p>
+<%= form_with url: "/score/edited", method: "post", data:{turbo: false} do|form| %>
+<table>                         
+  <tr>                          
+    <th>name</th>
+    <th>score</th>
+  </tr>
+  <tr>
+    
+    <%= form.hidden_field "old_name", value: @n%>
+    <td><%= form.text_field "new_name", value: @n %></td>
+    <%= form.hidden_field "old_score", value: @s%>
+    <td><%= form.text_field "new_score", value: @s %></td>
+    
+    
+
+  </tr>
+           
+</table>   
+
+<%= form.submit %>
+<%end%>
+<%= form_with url: "/score/list", method: "post", data:{turbo: false} do|form| %>
+<%= form.button "back" %>   
+<%end%>

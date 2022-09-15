@@ -1,0 +1,38 @@
+<h1>Score#list</h1>
+<p>Find me in app/views/score/list.html.erb</p>
+
+<p> Total score</p>
+<%= @sum_of_all_score%>
+<br>
+<p> Max score</p>
+<%=
+    @max_of_all_score
+%>
+<br>
+-------------------
+<br>
+
+<h1> Subject Database </h1>
+<table>                         
+  <tr>                          
+    <th>name</th>
+    <th>score</th>
+  </tr>
+<% Subject.all.each do |data| %>
+  <tr>
+    <td><%= data.name %></td>  
+    <td><%= data.score %></td> 
+
+    
+    <%= form_with url: "/score/delete", method: "post", data:{turbo: false} do|form| %>
+    <%= form.hidden_field :subject_name, value: data.name %>
+    <td><%= form.button "Delete" %></td>
+    <%end%>
+    <%= form_with url: "/score/edit", method: "post", data:{turbo: false} do|form2| %>
+    <%= form2.hidden_field :subject_name, value: data.name %>
+    <td><%= form2.button "edit" %></td>
+    <%end%>
+<% end %>
+  </tr>
+           
+</table>   
